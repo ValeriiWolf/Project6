@@ -4,6 +4,7 @@
 #include <fstream>
 #include <clocale>
 #include <string>
+#include <filesystem>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ void EnterArray2(size_t m, size_t k);
 void PrintTwoMerArray(size_t m, size_t k, int** arr);
 void Stringname(string name);
 void StringCopyTwo(string name1, string name2, string name3);
+void FileSerch(string name4, string key);
 
 int main()
 {
@@ -52,7 +54,7 @@ int main()
     cout << "Enter a word string ";
     string keystring;
     cin >> keystring;
-
+    FileSerch(name4, keystring);
 
     return 0;
 }
@@ -194,4 +196,17 @@ void StringCopyTwo(string name1, string name2, string name3)
     }
     fout << buf;
     fout.close();
+}
+
+void FileSerch(string name4, string key)
+{
+    string name = name4 + ".txt";
+    string buf;
+    if (filesystem::exists(name))
+    {
+        if (buf.find(key) != string::npos)
+        {
+            cout << "we found" + key;
+        }
+    }
 }
